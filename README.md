@@ -8,6 +8,7 @@ I installed ADB using this XDA thread: https://forum.xda-developers.com/t/tool-m
 And here is the latest Pythin installation link: https://www.python.org/downloads/
 
 ## Applications and what they do:
+<b>These apps can all be fully installed using<br>"pm uninstall -k --user 0 com.abc.xyz"</b><br><br>
 com.android.bips - Default Print Service<br>
 com.android.bookmarkprovider - Bookmark Provider<br>
 com.android.cellbroadcastreceiver - Cell Broadcast Receiver<br>
@@ -49,33 +50,33 @@ com.oplus.aod /<br>
 com.oplus.appdetail /<br>
 com.oplus.apprecover /<br>
 com.oplus.cardigitalkey /<br>
-com.oplus.cosa /
-com.oplus.deepthinker /
-com.oplus.encryption /
-com.oplus.interconnectcollectkit /
-com.oplus.linker /
-com.oplus.metis /
-com.oplus.ocar /
-com.oplus.ocloud /
-com.oplus.omoji /
-com.oplus.onet /
-com.oplus.ovoicemanager /
-com.oplus.ovoicemanager.cmdwakeup /
-com.oplus.ovoicemanager.wakeup /
-com.oplus.owork / Failure [not installed for 0]
-com.oplus.pantanal.ums / Failure [not installed for 0]
-com.oplus.securitykeyboard / do not unnistall
-com.oplus.smartengine /
-com.oplus.stdsp /
-com.oplus.synergy /
-com.oplus.travelengine / Failure [not installed for 0]
-com.oplus.upgradeguide /
-com.oplus.viewtalk / Failure [not installed for 0]
-com.oplus.vip /
-com.opos.ads /
-com.oppo.ctautoregist /
-com.oppo.instant.local.service /
-com.rongcard.eidapi /
+com.oplus.cosa /<br>
+com.oplus.deepthinker /<br>
+com.oplus.encryption /<br>
+com.oplus.interconnectcollectkit /<br>
+com.oplus.linker /<br>
+com.oplus.metis /<br>
+com.oplus.ocar /<br>
+com.oplus.ocloud /<br>
+com.oplus.omoji /<br>
+com.oplus.onet /<br>
+com.oplus.ovoicemanager /<br>
+com.oplus.ovoicemanager.cmdwakeup /<br>
+com.oplus.ovoicemanager.wakeup /<br>
+com.oplus.owork / Failure [not installed for 0]<br>
+com.oplus.pantanal.ums / Failure [not installed for 0]<br>
+com.oplus.securitykeyboard / do not unnistall<br>
+com.oplus.smartengine /<br>
+com.oplus.stdsp /<br>
+com.oplus.synergy /<br>
+com.oplus.travelengine / Failure [not installed for 0]<br>
+com.oplus.upgradeguide /<br>
+com.oplus.viewtalk / Failure [not installed for 0]<br>
+com.oplus.vip /<br>
+com.opos.ads /<br>
+com.oppo.ctautoregist /<br>
+com.oppo.instant.local.service /<br>
+com.rongcard.eidapi /<br>
 
 ## Code:
 ```python
@@ -281,3 +282,18 @@ if choice.__eq__("Uninstall") or choice.__eq__("uninstall") or choice.__eq__("U"
 ## Q&A and Explanations:
 The code sometimes returns Failure [not installed for 0]
 - this just means that the application is not installed in your device. It has either already been uninstalled or it is an app on the other phone model or a previous ROM version.
+
+The first set of applications can all be uninstallled properly from the ROM using
+- pm uninstall -k --user 0 com.abc.xyz
+
+The second set of applications can be uninstalled using
+- service call package 131 s16 com.abc.xyz i32 0 i32 0
+
+The third set of applications cannot be uninstalled and must instead be disabled. This uses
+- pm disable-user --user 0 com.abc.xyz
+
+And to install all of the apps back to the ROM you use
+- pm install-existing com.abc.xyz
+
+If you want to add any applications to the list of  to de-bloat then you can download Package Name Viewer from the play store. With it you can get the name of any app in your phone to add to the uninstall or install lists in the script.
+- https://play.google.com/store/apps/details?id=com.csdroid.pkg&hl=en_US&gl=US
